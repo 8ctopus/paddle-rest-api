@@ -1,0 +1,45 @@
+{
+    "name": "8ctopus/paddle-rest-api",
+    "type": "library",
+    "description": "Access the Paddle REST API",
+    "keywords": ["paddle", "api"],
+    "homepage": "https://github.com/8ctopus/paddle-rest-api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "8ctopus",
+            "email": "hello@octopuslabs.io"
+        }
+    ],
+    "require": {
+        "php": ">=8.4"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^6.2|^7.0|^8.0",
+        "nimbly/shuttle": "^1.0",
+        "clue/commander": "^1.4"
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-intl-grapheme": "*",
+        "symfony/polyfill-intl-normalizer": "*",
+        "symfony/polyfill-mbstring": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Oct8pus\\Paddle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "scripts": {
+    }
+}

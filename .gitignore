@@ -1,0 +1,9 @@
+# composer
+/composer.lock
+/vendor/
+
+# other
+/*.sublime-workspace
+/.env.php
+/dump.txt
+/dump.json

@@ -1,0 +1,128 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Oct8pus\Paddle;
+
+use JsonException;
+use Oct8pus\Paddle\Auth\Auth;
+
+class Products extends RestBase
+{
+    /**
+     * Constructor
+     *
+     * @param bool        $sandbox
+     * @param HttpHandler $handler
+     * @param Auth        $auth
+     */
+    public function __construct(bool $sandbox, HttpHandler $handler, Auth $auth)
+    {
+        parent::__construct($sandbox, $handler, $auth);
+    }
+
+    /**
+     * List products
+     *
+     * @return array<mixed>
+     */
+    public function list() : array
+    {
+        $url = '/products';
+
+        $params = [
+            'status' => 'active,archived',
+        ];
+
+        $url .= '?' . http_build_query($params);
+
+        $response = $this->sendRequest('GET', $url, [], null, 200);
+
+        return json_decode($response, true)['data'];
+    }
+
+    /**
+     * Get product
+     *
+     * @param string $id
+     *
+     * @return array<mixed>
+     */
+    public function get(string $id) : array
+    {
+        $url = "/products/{$id}";
+
+        $response = $this->sendRequest('GET', $url, [], null, 200);
+
+        return json_decode($response, true)['data'];
+    }
+
+    /**
+     * Create product
+     *
+     * @param array<string> $product
+     *
+     * @return array
+     *
+     * @throws JsonException|PaddleException
+     */
+    public function create(array $product) : array
+    {
+        $keys = [
+            'name', // required
+            'tax_category', // required digital-goods, ebooks, implementation-services, professional-services, saas, software-programming-services, standard, training-services, website-hosting
+            //'description',
+            //'type', // standard, custom
+            //'image_url',
+            //'custom_data',
+        ];
+
+        foreach ($keys as $key) {
+            if (!array_key_exists($key, $product)) {
+                throw new PaddleException("missing key - {$key}");
+            }
+        }
+
+        $url = '/products';
+
+        $response = $this->sendJsonRequest('POST', $url, [], $product, 201);
+
+        return json_decode($response, true)['data'];
+    }
+
+    /**
+     * Update product
+     *
+     * @param string $id
+     * @param string $key
+     * @param string $value
+     *
+     * @return array
+     */
+    public function update(string $id, string $key, string $value) : array
+    {
+        $update = [
+            $key => $value,
+        ];
+
+        $url = "/products/{$id}";
+
+        $response = $this->sendJsonRequest('PATCH', $url, [], $update, 200);
+
+        return json_decode($response, true)['data'];
+    }
+
+    /**
+     * Archive product
+     *
+     * @param  string $id
+     *
+     * @return self
+     */
+    public function archive(string $id) : self
+    {
+        $this->update($id, 'status', 'archived');
+
+        return $this;
+    }
+}
