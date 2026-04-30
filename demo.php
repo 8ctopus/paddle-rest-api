@@ -89,6 +89,31 @@ $router->add('products archive <product-id>', static function (array $args) use 
     $products->archive($args['product-id']);
 });
 
+$router->add('prices list', static function () use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->list());
+});
+
+$router->add('prices get <price-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->get($args['price-id']));
+});
+
+$router->add('prices create <product-id> <name> <description> <amount> <currency-code>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->create($args['product-id'], $args['name'], $args['description'], (float) $args['amount'], $args['currency-code']));
+});
+
+$router->add('prices update <price-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->update($args['price-id'], $args['key'], $args['value']));
+});
+
+$router->add('prices archive <price-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    $prices->archive($args['price-id']);
+});
+
 $router->add('discount groups list', static function () use ($sandbox, $handler, $auth) : void {
     $discountGroups = new DiscountGroups($sandbox, $handler, $auth);
     dump($discountGroups->list());
@@ -137,31 +162,6 @@ $router->add('discounts update <discount-id> <key> <value>', static function (ar
 $router->add('discounts archive <discount-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
     $discounts->archive($args['discount-id']);
-});
-
-$router->add('prices list', static function () use ($sandbox, $handler, $auth) : void {
-    $prices = new Prices($sandbox, $handler, $auth);
-    dump($prices->list());
-});
-
-$router->add('prices get <price-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
-    $prices = new Prices($sandbox, $handler, $auth);
-    dump($prices->get($args['price-id']));
-});
-
-$router->add('prices create <product-id> <name> <description> <amount> <currency-code>', static function (array $args) use ($sandbox, $handler, $auth) : void {
-    $prices = new Prices($sandbox, $handler, $auth);
-    dump($prices->create($args['product-id'], $args['name'], $args['description'], (float) $args['amount'], $args['currency-code']));
-});
-
-$router->add('prices update <price-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {
-    $prices = new Prices($sandbox, $handler, $auth);
-    dump($prices->update($args['price-id'], $args['key'], $args['value']));
-});
-
-$router->add('prices archive <price-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
-    $prices = new Prices($sandbox, $handler, $auth);
-    $prices->archive($args['price-id']);
 });
 
 $router->add('help', static function () use ($router) : void {
