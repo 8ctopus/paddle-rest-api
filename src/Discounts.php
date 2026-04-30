@@ -37,7 +37,7 @@ class Discounts extends RestBase
             //'per_page' => integer,
             //'include' => [string discount-group-id],
             //'code' => [string],
-            'order_by' => 'ASC',
+            //'order_by' => 'id[ASC]',
             //'status' => [active,archived],
             //'mode' => 'standard,custom',
             //'discount_group_id' => '',

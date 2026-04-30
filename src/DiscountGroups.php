@@ -34,7 +34,7 @@ class DiscountGroups extends RestBase
             //'id' => [string],
             //'after' => string,
             //'per_page' => integer,
-            'order_by' => 'ASC',
+            //'order_by' => 'id[ASC]',
         ];
 
         $url .= '?' . http_build_query($params);
