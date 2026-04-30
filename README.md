@@ -19,7 +19,32 @@ Copy `.env.example` to `.env` and fill in your Paddle REST API key. If you don't
 Here's a code sample that shows the general architecture. To see all possibilites run `php demo.php`.
 
 ```php
-TO DO
+use Nimbly\Capsule\Factory\RequestFactory;
+use Nimbly\Capsule\Factory\StreamFactory;
+use Nimbly\Shuttle\Shuttle;
+use Oct8pus\Paddle\HttpHandler;
+use Oct8pus\Paddle\Auth;
+use Oct8pus\Paddle\DiscountGroups;
+use Oct8pus\Paddle\Discounts;
+use Oct8pus\Paddle\Prices;
+use Oct8pus\Paddle\Products;
+
+$handler = new HttpHandler(
+    // PSR-18 http client
+    new Shuttle(),
+    // PSR-17 request factory
+    new RequestFactory(),
+    // PSR-7 stream
+    new StreamFactory()
+);
+
+$sandbox = true;
+
+$auth = new Auth($sandbox, $handler, $env['secret']);
+
+$products = new Products($sandbox, $handler, $auth);
+
+var_dump($products->list());
 ```
 
 ## issues with the current minimalist architecture
