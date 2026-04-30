@@ -21,3 +21,10 @@ Here's a code sample that shows the general architecture. To see all possibilite
 ```php
 TO DO
 ```
+
+## issues with the current minimalist architecture
+
+- hard to use the demo for more complex things
+    - list items with filters
+    - create complex items as arrays are not presently supported
+    - it's not possible to update a key which is not a string
