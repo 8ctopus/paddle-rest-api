@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Oct8pus\Paddle;
 
-use Oct8pus\Paddle\Auth\Auth;
+use Oct8pus\Paddle\Auth;
 
 abstract class RestBase
 {

@@ -8,7 +8,7 @@ use Nimbly\Capsule\Factory\StreamFactory;
 use Nimbly\Shuttle\Shuttle;
 use NunoMaduro\Collision\Provider;
 use Oct8pus\Paddle\HttpHandler;
-use Oct8pus\Paddle\Auth\Auth;
+use Oct8pus\Paddle\Auth;
 use Oct8pus\Paddle\DiscountGroups;
 use Oct8pus\Paddle\Discounts;
 use Oct8pus\Paddle\Products;

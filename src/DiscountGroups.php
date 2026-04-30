@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Oct8pus\Paddle;
 
 use JsonException;
-use Oct8pus\Paddle\Auth\Auth;
+use Oct8pus\Paddle\Auth;
 
 class DiscountGroups extends RestBase
 {

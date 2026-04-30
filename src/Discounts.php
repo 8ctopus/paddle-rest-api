@@ -6,7 +6,7 @@ namespace Oct8pus\Paddle;
 
 use DateTime;
 use JsonException;
-use Oct8pus\Paddle\Auth\Auth;
+use Oct8pus\Paddle\Auth;
 
 class Discounts extends RestBase
 {
