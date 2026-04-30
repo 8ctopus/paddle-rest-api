@@ -7,6 +7,7 @@ use Nimbly\Capsule\Factory\RequestFactory;
 use Nimbly\Capsule\Factory\StreamFactory;
 use Nimbly\Shuttle\Shuttle;
 use NunoMaduro\Collision\Provider;
+use Oct8pus\Paddle\Adjustments;
 use Oct8pus\Paddle\HttpHandler;
 use Oct8pus\Paddle\Auth;
 use Oct8pus\Paddle\DiscountGroups;
@@ -162,6 +163,21 @@ $router->add('discounts update <discount-id> <key> <value>', static function (ar
 $router->add('discounts archive <discount-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
     $discounts->archive($args['discount-id']);
+});
+
+$router->add('adjustments list', static function () use ($sandbox, $handler, $auth) : void {
+    $adjustments = new Adjustments($sandbox, $handler, $auth);
+    dump($adjustments->list());
+});
+
+$router->add('adjustments get <adjustment-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $adjustments = new Adjustments($sandbox, $handler, $auth);
+    dump($adjustments->get($args['adjustment-id']));
+});
+
+$router->add('adjustments create <action> <reason> <transaction-id> <type>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $adjustments = new Adjustments($sandbox, $handler, $auth);
+    dump($adjustments->create($args['action'], $args['reason'],sss $args['transaction-id'], $args['amount'], $args['currency-code'], (bool) $args['enabled-for-checkout'], $args['discount-group'], null, null, null, (bool) $args['recurr']));
 });
 
 $router->add('help', static function () use ($router) : void {
