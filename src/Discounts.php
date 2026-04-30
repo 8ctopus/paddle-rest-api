@@ -71,6 +71,19 @@ class Discounts extends RestBase
     /**
      * Create discount
      *
+     * @param  ?string   $code
+     * @param  string   $description
+     * @param  string   $type
+     * @param  float    $amount
+     * @param  ?string   $currencyCode
+     * @param  ?string   $mode
+     * @param  bool     $enabledForCheckout
+     * @param  ?string   $discountGroup
+     * @param  ?array    $restrictTo
+     * @param  ?int      $usageLimit
+     * @param  ?DateTime $expiresAt
+     * @param  bool     $recurr
+     *
      * @return array
      *
      * @throws JsonException|PaddleException
