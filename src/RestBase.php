@@ -69,6 +69,18 @@ abstract class RestBase
     }
 
     /**
+     * Decode response
+     *
+     * @param  string $response
+     *
+     * @return array
+     */
+    protected function decodeResponse(string $response) : array
+    {
+        return json_decode($response, true)['data'];
+    }
+
+    /**
      * Get headers
      *
      * @return array<string, string>

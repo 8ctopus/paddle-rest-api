@@ -47,7 +47,7 @@ class Discounts extends RestBase
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**
@@ -63,7 +63,7 @@ class Discounts extends RestBase
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**
@@ -99,7 +99,7 @@ class Discounts extends RestBase
 
         $response = $this->sendJsonRequest('POST', $url, [], $discount, 201);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**
@@ -124,7 +124,7 @@ class Discounts extends RestBase
 
         $response = $this->sendJsonRequest('PATCH', $url, [], $update, 200);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**

@@ -41,7 +41,7 @@ class DiscountGroups extends RestBase
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**
@@ -57,7 +57,7 @@ class DiscountGroups extends RestBase
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**
@@ -79,7 +79,7 @@ class DiscountGroups extends RestBase
 
         $response = $this->sendJsonRequest('POST', $url, [], $group, 201);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**
@@ -103,7 +103,7 @@ class DiscountGroups extends RestBase
 
         $response = $this->sendJsonRequest('PATCH', $url, [], $update, 200);
 
-        return json_decode($response, true)['data'];
+        return $this->decodeResponse($response);
     }
 
     /**
