@@ -77,20 +77,20 @@ class Prices extends RestBase
      * @param  string $productId
      * @param  ?string $name - Displayed to your customers at the checkout and on invoices, to help them understand what they are paying for.
      * @param  string $description - Add a short label to identify this price. This won't be shown to your customers.
-     * @param  float  $amount
+     * @param  string $amount
      * @param  string $currencyCode
      *
      * @return array
      *
      * @throws JsonException|PaddleException
      */
-    public function create(string $productId, ?string $name, string $description, float $amount, string $currencyCode) : array
+    public function create(string $productId, ?string $name, string $description, string $amount, string $currencyCode) : array
     {
         $price = [
             'product_id' => $productId,
             'description' => $description,
             'unit_price' => [
-                'amount' => (string) $amount,
+                'amount' => $amount,
                 'currency_code' => $currencyCode,
             ],
             'type' => 'standard', // standard,custom

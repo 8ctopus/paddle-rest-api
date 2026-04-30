@@ -74,7 +74,7 @@ class Discounts extends RestBase
      * @param  ?string   $code
      * @param  string   $description
      * @param  string   $type
-     * @param  float    $amount
+     * @param  string    $amount
      * @param  ?string   $currencyCode
      * @param  bool     $enabledForCheckout
      * @param  ?string   $discountGroup
@@ -87,13 +87,13 @@ class Discounts extends RestBase
      *
      * @throws JsonException|PaddleException
      */
-    public function create(?string $code, string $description, string $type, float $amount, ?string $currencyCode, bool $enabledForCheckout, ?string $discountGroup, ?array $restrictTo, ?int $usageLimit, ?DateTime $expiresAt, bool $recurr) : array
+    public function create(?string $code, string $description, string $type, string $amount, ?string $currencyCode, bool $enabledForCheckout, ?string $discountGroup, ?array $restrictTo, ?int $usageLimit, ?DateTime $expiresAt, bool $recurr) : array
     {
         $discount = [
             'code' => $code, // if not provided and enabled for checkout, then paddle generates one
             'description' => $description,
             'type' => $type, // flat, flat_per_seat, percentage
-            'amount' => (string) $amount,
+            'amount' => $amount,
             'currency_code' => $currencyCode, // required for flat and flat per seat discounts
             'mode' => 'standard', // standard discounts are shown in the dashboard, custom are not
             'enabled_for_checkout' => $enabledForCheckout,
