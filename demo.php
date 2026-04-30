@@ -11,6 +11,7 @@ use Oct8pus\Paddle\HttpHandler;
 use Oct8pus\Paddle\Auth;
 use Oct8pus\Paddle\DiscountGroups;
 use Oct8pus\Paddle\Discounts;
+use Oct8pus\Paddle\Prices;
 use Oct8pus\Paddle\Products;
 
 $vendor = __DIR__ . '/vendor/autoload.php';
@@ -136,6 +137,31 @@ $router->add('discounts update <discount-id> <key> <value>', static function (ar
 $router->add('discounts archive <discount-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
     $discounts->archive($args['discount-id']);
+});
+
+$router->add('prices list', static function () use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->list());
+});
+
+$router->add('prices get <price-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->get($args['price-id']));
+});
+
+$router->add('prices create <product-id> <description> <amount> <currency-code> <type> <name>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->create($args['product-id'], $args['description'], $args['amount'], $args['currency-code'], $args['type'], $args['name']));
+});
+
+$router->add('prices update <price-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    dump($prices->update($args['price-id'], $args['key'], $args['value']));
+});
+
+$router->add('prices archive <price-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $prices = new Prices($sandbox, $handler, $auth);
+    $prices->archive($args['price-id']);
 });
 
 $router->add('help', static function () use ($router) : void {
