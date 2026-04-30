@@ -46,7 +46,9 @@ class Prices extends RestBase
             //'type' => 'standard,custom',
         ];
 
-        $url .= '?' . http_build_query($params);
+        if (count($params)) {
+            $url .= '?' . http_build_query($params);
+        }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
 

@@ -34,7 +34,9 @@ class Products extends RestBase
             'status' => 'active,archived',
         ];
 
-        $url .= '?' . http_build_query($params);
+        if (count($params)) {
+            $url .= '?' . http_build_query($params);
+        }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
 
