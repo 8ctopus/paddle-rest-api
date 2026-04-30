@@ -149,9 +149,9 @@ $router->add('prices get <price-id>', static function (array $args) use ($sandbo
     dump($prices->get($args['price-id']));
 });
 
-$router->add('prices create <product-id> <description> <amount> <currency-code> <type> <name>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+$router->add('prices create <product-id> <name> <description> <amount> <currency-code>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $prices = new Prices($sandbox, $handler, $auth);
-    dump($prices->create($args['product-id'], $args['description'], $args['amount'], $args['currency-code'], $args['type'], $args['name']));
+    dump($prices->create($args['product-id'], $args['name'], $args['description'], (float) $args['amount'], $args['currency-code']));
 });
 
 $router->add('prices update <price-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {

@@ -24,9 +24,11 @@ class Prices extends RestBase
     /**
      * List prices
      *
+     * @param ?array $productIds
+     *
      * @return array<mixed>
      */
-    public function list() : array
+    public function list(?array $productIds = null) : array
     {
         $url = '/prices';
 
@@ -35,8 +37,8 @@ class Prices extends RestBase
             //'after' => string,
             //'per_page' => integer,
             //'include' => [string product-id],
-            'order_by' => 'ASC',
-            //'product_id' => [string product-id],
+            //'order_by' => 'id[ASC]',
+            'product_id' => $productIds,
             //'status' => [active,archived],
             //'recurring' => bool,
             //'billing_cycle.interval' => 'day,week,month,year',
@@ -71,26 +73,25 @@ class Prices extends RestBase
      * Create price
      *
      * @param  string $productId
-     * @param  string $description
+     * @param  ?string $name - Displayed to your customers at the checkout and on invoices, to help them understand what they are paying for.
+     * @param  string $description - Add a short label to identify this price. This won't be shown to your customers.
      * @param  float  $amount
      * @param  string $currencyCode
-     * @param  string $type
-     * @param  ?string $name
      *
      * @return array
      *
      * @throws JsonException|PaddleException
      */
-    public function create(string $productId, string $description, float $amount, string $currencyCode, string $type, ?string $name) : array
+    public function create(string $productId, ?string $name, string $description, float $amount, string $currencyCode) : array
     {
         $price = [
             'product_id' => $productId,
             'description' => $description,
             'unit_price' => [
-                'amount' => $amount,
+                'amount' => (string) $amount,
                 'currency_code' => $currencyCode,
             ],
-            'type' => $type, // standard,custom
+            'type' => 'standard', // standard,custom
             'name' => $name,
             /*
             'billing_cycle' => [
@@ -103,7 +104,10 @@ class Prices extends RestBase
             ],
             'tax_mode' => 'account_setting,external,internal,location',
             'unit_price_overrides' => ,
-            'quantity' => object,
+            'quantity' => [
+                'minimum' => 1,
+                'maximum' => 100,
+            ],
             'custom_data' => null,
             */
         ];
