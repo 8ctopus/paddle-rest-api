@@ -2,7 +2,7 @@
 
 A php implementation of the Paddle REST API using `PSR-7`, `PSR-17` and `PSR-18` as I didn't like the official API's excessive use of dependencies.
 
-The package is a work in progress and contributions are welcome. For now, it covers `Products`, `Prices`, `Discounts` and `Discount Groups`.
+The package is an exploratory work in progress and contributions are welcome. For now, it currently covers `Products`, `Prices`, `Discounts` and `Discount Groups`.
 
 ## install package
 
@@ -16,7 +16,7 @@ Copy `.env.example` to `.env` and fill in your Paddle REST API key. If you don't
 
 ## demo
 
-Here's a code sample that shows the general architecture. To see all possibilites run `php demo.php`.
+Here's a code snippet that shows the general architecture. To see all possibilites run `php demo.php`.
 
 ```php
 use Nimbly\Capsule\Factory\RequestFactory;
@@ -24,9 +24,6 @@ use Nimbly\Capsule\Factory\StreamFactory;
 use Nimbly\Shuttle\Shuttle;
 use Oct8pus\Paddle\HttpHandler;
 use Oct8pus\Paddle\Auth;
-use Oct8pus\Paddle\DiscountGroups;
-use Oct8pus\Paddle\Discounts;
-use Oct8pus\Paddle\Prices;
 use Oct8pus\Paddle\Products;
 
 $handler = new HttpHandler(
