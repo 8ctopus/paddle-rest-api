@@ -1,7 +1,7 @@
 {
     "name": "8ctopus/paddle-rest-api",
     "type": "library",
-    "description": "Access the Paddle REST API",
+    "description": "Paddle REST API implementation using PSR-7, PSR-17 and PSR-18",
     "keywords": ["paddle", "api"],
     "homepage": "https://github.com/8ctopus/paddle-rest-api",
     "license": "MIT",
