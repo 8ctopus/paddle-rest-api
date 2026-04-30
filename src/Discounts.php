@@ -72,16 +72,16 @@ class Discounts extends RestBase
      * Create discount
      *
      * @param  ?string   $code
-     * @param  string   $description
-     * @param  string   $type
-     * @param  string    $amount
+     * @param  string    $description
+     * @param  string    $type
+     * @param  string    $amount - Lowest denomination in the currency, eg. 0.01 EUR = 1 and 1 JPY = 1
      * @param  ?string   $currencyCode
-     * @param  bool     $enabledForCheckout
+     * @param  bool      $enabledForCheckout
      * @param  ?string   $discountGroup
      * @param  ?array    $restrictTo
      * @param  ?int      $usageLimit
      * @param  ?DateTime $expiresAt
-     * @param  bool     $recurr
+     * @param  bool      $recurr
      *
      * @return array
      *
