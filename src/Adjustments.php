@@ -59,20 +59,20 @@ class Adjustments extends RestBase
      *
      * @param  string   $transactionId
      * @param  string   $action
-     * @param  string   $reason
      * @param  string   $type
+     * @param  string   $reason
      *
      * @return array
      *
      * @throws JsonException|PaddleException
      */
-    public function create(string $action, string $reason, string $transactionId, string $type) : array
+    public function create(string $transactionId, string $action, string $type, string $reason) : array
     {
         $adjustment = [
             'transaction_id' => $transactionId,
             'action' => $action, // refund,credit
-            'reason' => $reason,
             'type' => $type, // full,partial
+            'reason' => $reason,
             //'tax_mode' => // internal,external
             //'items' => [], // List of transaction items to adjust. Required if type is not populated or set to partial.
         ];
