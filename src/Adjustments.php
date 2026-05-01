@@ -57,10 +57,10 @@ class Adjustments extends RestBase
     /**
      * Create adjustment
      *
-     * @param  string   $transactionId
-     * @param  string   $action
-     * @param  string   $type
-     * @param  string   $reason
+     * @param string $transactionId
+     * @param string $action
+     * @param string $type
+     * @param string $reason
      *
      * @return array
      *

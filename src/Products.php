@@ -104,7 +104,7 @@ class Products extends RestBase
     /**
      * Archive product
      *
-     * @param  string $id
+     * @param string $id
      *
      * @return self
      */

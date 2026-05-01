@@ -98,7 +98,7 @@ class DiscountGroups extends RestBase
     /**
      * Archive discount group
      *
-     * @param  string $id
+     * @param string $id
      *
      * @return self
      */

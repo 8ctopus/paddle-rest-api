@@ -85,9 +85,7 @@ class Transactions extends RestBase
     public function create() : array
     {
         throw new PaddleException('not implemented');
-
-        $transaction = [
-        ];
+        $transaction = [];
 
         $url = '/transactions';
 
@@ -131,9 +129,7 @@ class Transactions extends RestBase
     public function preview(string $id) : array
     {
         throw new PaddleException('not implemented');
-
-        $transaction = [
-        ];
+        $transaction = [];
 
         $url = "/transactions/{$id}/preview";
 
@@ -145,7 +141,7 @@ class Transactions extends RestBase
     /**
      * Get pdf
      *
-     * @param  string $id
+     * @param string $id
      *
      * @return array
      */
@@ -167,16 +163,14 @@ class Transactions extends RestBase
     /**
      * Revise transaction
      *
-     * @param  string $id
+     * @param string $id
      *
      * @return array
      */
     public function revise(string $id) : array
     {
         throw new PaddleException('not implemented');
-
-        $transaction = [
-        ];
+        $transaction = [];
 
         $url = "/transactions/{$id}/preview";
 

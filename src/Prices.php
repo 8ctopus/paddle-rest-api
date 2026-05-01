@@ -61,11 +61,11 @@ class Prices extends RestBase
     /**
      * Create price
      *
-     * @param  string $productId
-     * @param  ?string $name - Displayed to your customers at the checkout and on invoices, to help them understand what they are paying for.
-     * @param  string $description - Add a short label to identify this price. This won't be shown to your customers.
-     * @param  string $amount - Lowest denomination in the currency, eg. 0.01 EUR = 1 and 1 JPY = 1
-     * @param  string $currencyCode
+     * @param string  $productId
+     * @param ?string $name         - Displayed to your customers at the checkout and on invoices, to help them understand what they are paying for
+     * @param string  $description  - Add a short label to identify this price. This won't be shown to your customers.
+     * @param string  $amount       - Lowest denomination in the currency, eg. 0.01 EUR = 1 and 1 JPY = 1
+     * @param string  $currencyCode
      *
      * @return array
      *
@@ -136,7 +136,7 @@ class Prices extends RestBase
     /**
      * Archive price
      *
-     * @param  string $id
+     * @param string $id
      *
      * @return self
      */

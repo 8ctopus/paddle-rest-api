@@ -71,7 +71,7 @@ abstract class RestBase
     /**
      * Decode response
      *
-     * @param  string $response
+     * @param string $response
      *
      * @return array
      */
