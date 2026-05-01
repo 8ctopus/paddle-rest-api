@@ -55,15 +55,7 @@ class Transactions extends RestBase
         $url = "/transactions/{$id}";
 
         $params = [
-            'include' => [
-                //'address',
-                'adjustments',
-                //'adjustments_totals',
-                //'available_payment_methods',
-                //'business',
-                //'customer',
-                //'discount',
-            ],
+            'include' => 'adjustments', // address,adjustments,adjustments_totals,available_payment_methods,business,customer,discount
         ];
 
         if (count($params)) {
