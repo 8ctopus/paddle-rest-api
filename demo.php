@@ -177,7 +177,7 @@ $router->add('adjustments get <adjustment-id>', static function (array $args) us
 
 $router->add('adjustments create <action> <reason> <transaction-id> <type>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $adjustments = new Adjustments($sandbox, $handler, $auth);
-    dump($adjustments->create($args['action'], $args['reason'],sss $args['transaction-id'], $args['amount'], $args['currency-code'], (bool) $args['enabled-for-checkout'], $args['discount-group'], null, null, null, (bool) $args['recurr']));
+    dump($adjustments->create($args['action'], $args['reason'], $args['transaction-id'], $args['type']));
 });
 
 $router->add('help', static function () use ($router) : void {
