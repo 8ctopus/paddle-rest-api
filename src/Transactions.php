@@ -55,11 +55,21 @@ class Transactions extends RestBase
     {
         $url = "/transactions/{$id}";
 
-        /*
         $params = [
-            'include' => [address,adjustments,adjustments_totals,available_payment_methods,business,customer,discount]
+            'include' => [
+                //'address',
+                'adjustments',
+                //'adjustments_totals',
+                //'available_payment_methods',
+                //'business',
+                //'customer',
+                //'discount',
+            ],
         ];
-        */
+
+        if (count($params)) {
+            $url .= '?' . http_build_query($params);
+        }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
 
