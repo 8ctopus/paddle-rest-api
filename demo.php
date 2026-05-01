@@ -14,6 +14,7 @@ use Oct8pus\Paddle\DiscountGroups;
 use Oct8pus\Paddle\Discounts;
 use Oct8pus\Paddle\Prices;
 use Oct8pus\Paddle\Products;
+use Oct8pus\Paddle\Transactions;
 
 $vendor = __DIR__ . '/vendor/autoload.php';
 
@@ -163,6 +164,21 @@ $router->add('discounts update <discount-id> <key> <value>', static function (ar
 $router->add('discounts archive <discount-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
     $discounts->archive($args['discount-id']);
+});
+
+$router->add('transactions list', static function () use ($sandbox, $handler, $auth) : void {
+    $transactions = new Transactions($sandbox, $handler, $auth);
+    dump($transactions->list());
+});
+
+$router->add('transactions get <transaction-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $transactions = new Transactions($sandbox, $handler, $auth);
+    dump($transactions->get($args['transaction-id']));
+});
+
+$router->add('transactions update <transaction-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $transactions = new Transactions($sandbox, $handler, $auth);
+    dump($transactions->update($args['transaction-id'], $args['key'], $args['value']));
 });
 
 $router->add('adjustments list', static function () use ($sandbox, $handler, $auth) : void {
