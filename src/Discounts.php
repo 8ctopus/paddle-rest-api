@@ -6,22 +6,9 @@ namespace Oct8pus\Paddle;
 
 use DateTime;
 use JsonException;
-use Oct8pus\Paddle\Auth;
 
 class Discounts extends RestBase
 {
-    /**
-     * Constructor
-     *
-     * @param bool        $sandbox
-     * @param HttpHandler $handler
-     * @param Auth        $auth
-     */
-    public function __construct(bool $sandbox, HttpHandler $handler, Auth $auth)
-    {
-        parent::__construct($sandbox, $handler, $auth);
-    }
-
     /**
      * List discounts
      *
