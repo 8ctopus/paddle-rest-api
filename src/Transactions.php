@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Oct8pus\Paddle;
 
-use DateTime;
 use JsonException;
 
 class Transactions extends RestBase
