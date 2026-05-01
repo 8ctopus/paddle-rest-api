@@ -4,6 +4,7 @@
 
 # other
 /*.sublime-workspace
+/.php-cs-fixer.cache
 /.env.php
 /dump.txt
 /dump.json
