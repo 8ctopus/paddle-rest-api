@@ -57,9 +57,9 @@ class Adjustments extends RestBase
     /**
      * Create adjustment
      *
+     * @param  string   $transactionId
      * @param  string   $action
      * @param  string   $reason
-     * @param  string   $transactionId
      * @param  string   $type
      *
      * @return array
@@ -69,11 +69,11 @@ class Adjustments extends RestBase
     public function create(string $action, string $reason, string $transactionId, string $type) : array
     {
         $adjustment = [
-            'action' => $action, // [credit,refund]
-            'reason' => $reason,
             'transaction_id' => $transactionId,
-            'type' => $type, // [full,partial]
-            //'tax_mode' => // [internal,external]
+            'action' => $action, // refund,credit
+            'reason' => $reason,
+            'type' => $type, // full,partial
+            //'tax_mode' => // internal,external
             //'items' => [], // List of transaction items to adjust. Required if type is not populated or set to partial.
         ];
 

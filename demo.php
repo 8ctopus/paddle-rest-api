@@ -191,9 +191,9 @@ $router->add('adjustments get <adjustment-id>', static function (array $args) us
     dump($adjustments->get($args['adjustment-id']));
 });
 
-$router->add('adjustments create <action> <reason> <transaction-id> <type>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+$router->add('adjustments create <transaction-id> <action> <reason> <type>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $adjustments = new Adjustments($sandbox, $handler, $auth);
-    dump($adjustments->create($args['action'], $args['reason'], $args['transaction-id'], $args['type']));
+    dump($adjustments->create($args['transaction-id'], $args['action'], $args['reason'], $args['type']));
 });
 
 $router->add('help', static function () use ($router) : void {
