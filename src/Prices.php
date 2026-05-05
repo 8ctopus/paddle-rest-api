@@ -75,13 +75,18 @@ class Prices extends RestBase
     {
         $price = [
             'product_id' => $productId,
+            'name' => $name,
             'description' => $description,
             'unit_price' => [
                 'amount' => $amount,
                 'currency_code' => $currencyCode,
             ],
             'type' => 'standard', // standard,custom
-            'name' => $name,
+            'tax_mode' => 'account_setting', // account_setting,external,internal,location
+            'quantity' => [
+                'minimum' => 1,
+                'maximum' => 1,
+            ],
             /*
             'billing_cycle' => [
                 'frequency' => integer,
@@ -91,12 +96,7 @@ class Prices extends RestBase
                 'frequency' => integer,
                 'interval' => 'day,week,month,year',
             ],
-            'tax_mode' => 'account_setting,external,internal,location',
             'unit_price_overrides' => ,
-            'quantity' => [
-                'minimum' => 1,
-                'maximum' => 100,
-            ],
             'custom_data' => null,
             */
         ];
