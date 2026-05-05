@@ -70,9 +70,9 @@ $router->add('products get <product-id>', static function (array $args) use ($sa
     dump($products->get($args['product-id']));
 });
 
-$router->add('products create <name> <tax-category> <description> <type> <image-url>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+$router->add('products create <name> <description> <type> <tax-category> <image-url>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $products = new Products($sandbox, $handler, $auth);
-    dump($products->create($args['name'], $args['tax-category'], $args['description'], $args['type'], $args['image-url'] !== 'null' ? $args['image-url'] : null));
+    dump($products->create($args['name'], $args['description'], $args['type'], $args['tax-category'], $args['image-url'] !== 'null' ? $args['image-url'] : null));
 });
 
 $router->add('products update <product-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {

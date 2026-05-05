@@ -50,24 +50,24 @@ class Products extends RestBase
      * Create product
      *
      * @param  string $name
-     * @param  string $taxCategory
-     * @param  string $description
+     * @param  ?string $description
      * @param  string $type
+     * @param  string $taxCategory
      * @param  ?string $imageUrl
      *
      * @return array
      *
      * @throws JsonException|PaddleException
      */
-    public function create(string $name, string $taxCategory, string $description, string $type, ?string $imageUrl) : array
+    public function create(string $name, ?string $description, string $type, string $taxCategory, ?string $imageUrl) : array
     {
         $product = [
             'name' => $name, // required
-            'tax_category' => $taxCategory, // required digital-goods, ebooks, implementation-services, professional-services, saas, software-programming-services, standard, training-services, website-hosting
             'description' => $description,
             'type' => $type, // standard, custom
+            'tax_category' => $taxCategory, // required digital-goods, ebooks, implementation-services, professional-services, saas, software-programming-services, standard, training-services, website-hosting
             'image_url' => $imageUrl,
-            //'custom_data',
+            //'custom_data' => [],
         ];
 
         $url = '/products';
