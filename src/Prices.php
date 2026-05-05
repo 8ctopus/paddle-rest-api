@@ -63,7 +63,7 @@ class Prices extends RestBase
      *
      * @param string  $productId
      * @param ?string $name         - Displayed to your customers at the checkout and on invoices, to help them understand what they are paying for
-     * @param string  $description  - Add a short label to identify this price. This won't be shown to your customers.
+     * @param ?string $description  - Add a short label to identify this price. This won't be shown to your customers.
      * @param string  $amount       - Lowest denomination in the currency, eg. 0.01 EUR = 1 and 1 JPY = 1
      * @param string  $currencyCode
      *
@@ -71,15 +71,15 @@ class Prices extends RestBase
      *
      * @throws JsonException|PaddleException
      */
-    public function create(string $productId, ?string $name, string $description, string $amount, string $currencyCode) : array
+    public function create(string $productId, ?string $name, ?string $description, string $amount, string $currencyCode) : array
     {
         $price = [
-            'product_id' => $productId,
-            'name' => $name,
-            'description' => $description,
+            'product_id' => $productId, // required
+            'name' => $name, // ?string
+            'description' => $description, // ?string
             'unit_price' => [
-                'amount' => $amount,
-                'currency_code' => $currencyCode,
+                'amount' => $amount, // string
+                'currency_code' => $currencyCode, // string
             ],
             'type' => 'standard', // standard,custom
             'tax_mode' => 'account_setting', // account_setting,external,internal,location
