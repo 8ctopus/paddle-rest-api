@@ -49,28 +49,26 @@ class Products extends RestBase
     /**
      * Create product
      *
-     * @param array<string> $product
+     * @param  string $name
+     * @param  string $taxCategory
+     * @param  string $description
+     * @param  string $type
+     * @param  ?string $imageUrl
      *
      * @return array
      *
      * @throws JsonException|PaddleException
      */
-    public function create(array $product) : array
+    public function create(string $name, string $taxCategory, string $description, string $type, ?string $imageUrl) : array
     {
-        $keys = [
-            'name', // required
-            'tax_category', // required digital-goods, ebooks, implementation-services, professional-services, saas, software-programming-services, standard, training-services, website-hosting
-            //'description',
-            //'type', // standard, custom
-            //'image_url',
+        $product = [
+            'name' => $name, // required
+            'tax_category' => $taxCategory, // required digital-goods, ebooks, implementation-services, professional-services, saas, software-programming-services, standard, training-services, website-hosting
+            'description' => $description,
+            'type' => $type, // standard, custom
+            'image_url' => $imageUrl,
             //'custom_data',
         ];
-
-        foreach ($keys as $key) {
-            if (!array_key_exists($key, $product)) {
-                throw new PaddleException("missing key - {$key}");
-            }
-        }
 
         $url = '/products';
 
