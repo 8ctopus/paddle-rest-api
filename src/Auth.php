@@ -16,13 +16,19 @@ class Auth extends RestBase
      *
      * @param bool        $sandbox
      * @param HttpHandler $handler
-     * @param string      $secret
+     * @param string      $token - Api key
+     *
+     * @throws PaddleException
      */
-    public function __construct(bool $sandbox, HttpHandler $handler, string $secret)
+    public function __construct(bool $sandbox, HttpHandler $handler, string $token)
     {
         parent::__construct($sandbox, $handler, null);
 
-        $this->token = $secret;
+        if (empty($token)) {
+            throw new PaddleException('api key missing');
+        }
+
+        $this->token = $token;
     }
 
     /**
