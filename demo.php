@@ -9,6 +9,7 @@ use Nimbly\Shuttle\Shuttle;
 use NunoMaduro\Collision\Provider;
 use Oct8pus\Paddle\Adjustments;
 use Oct8pus\Paddle\Auth;
+use Oct8pus\Paddle\Customers;
 use Oct8pus\Paddle\DiscountGroups;
 use Oct8pus\Paddle\Discounts;
 use Oct8pus\Paddle\HttpHandler;
@@ -188,6 +189,26 @@ $router->add('adjustments get <adjustment-id>', static function (array $args) us
 $router->add('adjustments create <transaction-id> <action> <type> <reason>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $adjustments = new Adjustments($sandbox, $handler, $auth);
     dump($adjustments->create($args['transaction-id'], $args['action'], $args['type'], $args['reason']));
+});
+
+$router->add('customers list', static function () use ($sandbox, $handler, $auth) : void {
+    $customers = new Customers($sandbox, $handler, $auth);
+    dump($customers->list());
+});
+
+$router->add('customers get <customer-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $customers = new Customers($sandbox, $handler, $auth);
+    dump($customers->get($args['customer-id']));
+});
+
+$router->add('customers create <email> <name>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $customers = new Customers($sandbox, $handler, $auth);
+    dump($customers->create($args['email'], $args['name']));
+});
+
+$router->add('customers update <customer-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $customers = new Customers($sandbox, $handler, $auth);
+    dump($customers->update($args['customer-id'], $args['key'], $args['value']));
 });
 
 $router->add('help', static function () use ($router) : void {

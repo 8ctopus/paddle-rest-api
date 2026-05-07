@@ -2,7 +2,7 @@
 
 A php implementation of the Paddle REST API using `PSR-7`, `PSR-17` and `PSR-18` as I didn't like the official API's excessive use of dependencies.
 
-The package is an exploratory work in progress and contributions are welcome. For now, it currently covers `Products`, `Prices`, `Discounts`, `Discount Groups`, `Transactions` (partial) and `Adjustments` (refunds).
+The package is an exploratory work in progress and contributions are welcome. For now, it currently covers `Products`, `Prices`, `Discounts`, `Discount Groups`, `Transactions` (partial), `Adjustments` (refunds) and `Customers`.
 
 ## install package
 
