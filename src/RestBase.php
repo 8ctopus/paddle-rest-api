@@ -74,6 +74,8 @@ abstract class RestBase
      * @param string $response
      *
      * @return array
+     *
+     * @throws JSONException|ValueError
      */
     protected function decodeResponse(string $response) : array
     {

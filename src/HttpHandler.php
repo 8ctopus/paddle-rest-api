@@ -31,7 +31,7 @@ class HttpHandler
     }
 
     /**
-     * Send request
+     * Create request
      *
      * @param string        $method
      * @param string        $uri
@@ -57,6 +57,15 @@ class HttpHandler
         return $request;
     }
 
+    /**
+     * Send request
+     *
+     * @param  RequestInterface $request
+     *
+     * @return ResponseInterface
+     *
+     * @throws ClientExceptionInterface
+     */
     public function sendRequest(RequestInterface $request) : ResponseInterface
     {
         // @codeCoverageIgnoreStart
@@ -65,6 +74,14 @@ class HttpHandler
         // @codeCoverageIgnoreEnd
     }
 
+    /**
+     * Process response
+     *
+     * @param  ResponseInterface $response
+     * @param  array|int         $expectedStatus
+     *
+     * @return string
+     */
     public function processResponse(ResponseInterface $response, array|int $expectedStatus) : string
     {
         $body = (string) $response->getBody();

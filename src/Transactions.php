@@ -94,6 +94,8 @@ class Transactions extends RestBase
      * @param string|bool|int|array $value
      *
      * @return array
+     *
+     * @throws PaddleException
      */
     public function update(string $id, string $key, string|bool|int|array $value) : array
     {
