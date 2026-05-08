@@ -262,7 +262,7 @@ exit(0);
  */
 function dump(mixed $variable) : void
 {
-    $variable = json_encode($variable, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n";
+    $variable = json_encode($variable, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n";
 
     echo $variable;
 
