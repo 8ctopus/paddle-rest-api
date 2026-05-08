@@ -79,7 +79,7 @@ abstract class RestBase
      */
     protected function decodeResponse(string $response) : array
     {
-        return json_decode($response, true)['data'];
+        return json_decode($response, true, 512, JSON_THROW_ON_ERROR)['data'];
     }
 
     /**
