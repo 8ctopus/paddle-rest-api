@@ -75,11 +75,17 @@ abstract class RestBase
      *
      * @return array
      *
-     * @throws JSONException|ValueError
+     * @throws JSONException|ValueError|PaddleException
      */
     protected function decodeResponse(string $response) : array
     {
-        return json_decode($response, true, 512, JSON_THROW_ON_ERROR)['data'];
+        $decoded = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
+
+        if (!array_key_exists('data', $decoded)) {
+            throw new PaddleException('response does not contain data key');
+        }
+
+        return $decoded['data'];
     }
 
     /**
