@@ -106,11 +106,11 @@ class Discounts extends RestBase
      *
      * @param string $id
      * @param string $key
-     * @param string $value
+     * @param string|bool|int|array $value
      *
      * @return array
      */
-    public function update(string $id, string $key, string $value) : array
+    public function update(string $id, string $key, string|bool|int|array $value) : array
     {
         // possible keys: status, description, enabled_for_checkout, code, type, mode, amount, currency_code, recur,
         // maximum_recurring_intervals, usage_limit, restrict_to, expires_at, custom_data, discount_group_id

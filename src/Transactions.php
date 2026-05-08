@@ -91,11 +91,11 @@ class Transactions extends RestBase
      *
      * @param string $id
      * @param string $key
-     * @param string $value
+     * @param string|bool|int|array $value
      *
      * @return array
      */
-    public function update(string $id, string $key, string $value) : array
+    public function update(string $id, string $key, string|bool|int|array $value) : array
     {
         // possible keys: status, customer_id, address_id, business_id, custom_data, currency_code,
         // origin, collection_mode, discount_id, discount, billing_details, billing_period, items, checkout

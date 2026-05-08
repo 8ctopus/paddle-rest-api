@@ -113,11 +113,11 @@ class Prices extends RestBase
      *
      * @param string $id
      * @param string $key
-     * @param string $value
+     * @param string|bool|int|array $value
      *
      * @return array
      */
-    public function update(string $id, string $key, string $value) : array
+    public function update(string $id, string $key, string|bool|int|array $value) : array
     {
         // possible keys: description, type, name, billing_cycle, trial_period, tax_mode, unit_price, unit_price_overrides,
         // quantity, status, custom_data

@@ -83,11 +83,11 @@ class Customers extends RestBase
      *
      * @param string $id
      * @param string $key
-     * @param string $value
+     * @param string|bool|int|array $value
      *
      * @return array
      */
-    public function update(string $id, string $key, string $value) : array
+    public function update(string $id, string $key, string|bool|int|array $value) : array
     {
         $update = [
             $key => $value,
