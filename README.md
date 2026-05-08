@@ -44,9 +44,12 @@ $products = new Products($sandbox, $handler, $auth);
 var_dump($products->list());
 ```
 
+## todo
+
+- implement tests
+
 ## issues with the current minimalist architecture
 
 - hard to use the demo for more complex things
-    - list items with filters
-    - create complex items as arrays are not presently supported
-    - it's not possible to update a key which is not a string
+- filter lists not implemented
+- create complex items as arrays are not presently supported
