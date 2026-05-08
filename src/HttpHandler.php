@@ -85,7 +85,6 @@ class HttpHandler
     public function processResponse(ResponseInterface $response, array|int $expectedStatus) : string
     {
         $body = (string) $response->getBody();
-        file_put_contents(__DIR__ . '/../dump.txt', $body);
 
         if (is_int($expectedStatus)) {
             $expectedStatus = [$expectedStatus];
