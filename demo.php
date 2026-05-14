@@ -146,9 +146,9 @@ $router->add('discounts get <discount-id>', static function (array $args) use ($
     dump($discounts->get($args['discount-id']));
 });
 
-$router->add('discounts create <code> <description> <type> <amount> <currency-code> <enabled-for-checkout> <discount-group> <recurr>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+$router->add('discounts create <code> <description> <type> <mode> <amount> <currency-code> <enabled-for-checkout> <discount-group> <recurr>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
-    dump($discounts->create($args['code'], $args['description'], $args['type'], $args['amount'], $args['currency-code'], (bool) $args['enabled-for-checkout'], $args['discount-group'], null, null, null, (bool) $args['recurr']));
+    dump($discounts->create($args['code'], $args['description'], $args['type'], $args['mode'], $args['amount'], $args['currency-code'], (bool) $args['enabled-for-checkout'], $args['discount-group'], null, null, null, (bool) $args['recurr']));
 });
 
 $router->add('discounts update <discount-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {

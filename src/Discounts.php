@@ -12,23 +12,27 @@ class Discounts extends RestBase
     /**
      * List discounts
      *
+     * @param array $params
+     *
      * @return array<mixed>
      */
-    public function list() : array
+    public function list(array $params = []) : array
     {
         $url = '/discounts';
 
+        /*
         $params = [
-            //'id' => [string],
-            //'after' => string,
-            //'per_page' => integer,
-            //'include' => [string discount-group-id],
-            //'code' => [string],
-            //'order_by' => 'id[ASC]',
-            //'status' => [active,archived],
-            //'mode' => 'standard,custom',
-            //'discount_group_id' => '',
+            'id' => [string],
+            'after' => string,
+            'per_page' => integer,
+            'include' => [string discount-group-id],
+            'code' => [string],
+            'order_by' => 'id[ASC]',
+            'status' => [active,archived],
+            'mode' => 'standard,custom',
+            'discount_group_id' => '',
         ];
+        */
 
         if (count($params)) {
             $url .= '?' . http_build_query($params);
@@ -61,6 +65,7 @@ class Discounts extends RestBase
      * @param ?string   $code
      * @param string    $description
      * @param string    $type
+     * @param string    $mode
      * @param string    $amount             - Lowest denomination in the currency, eg. 0.01 EUR = 1 and 1 JPY = 1
      * @param ?string   $currencyCode
      * @param bool      $enabledForCheckout
@@ -74,15 +79,15 @@ class Discounts extends RestBase
      *
      * @throws JsonException|PaddleException
      */
-    public function create(?string $code, string $description, string $type, string $amount, ?string $currencyCode, bool $enabledForCheckout, ?string $discountGroup, ?array $restrictTo, ?int $usageLimit, ?DateTime $expiresAt, bool $recurr) : array
+    public function create(?string $code, string $description, string $type, string $mode, string $amount, ?string $currencyCode, bool $enabledForCheckout, ?string $discountGroup, ?array $restrictTo, ?int $usageLimit, ?DateTime $expiresAt, bool $recurr) : array
     {
         $discount = [
             'code' => $code, // if not provided and enabled for checkout, then paddle generates one
             'description' => $description,
             'type' => $type, // flat, flat_per_seat, percentage
+            'mode' => $mode, // standard discounts are shown in the dashboard, custom are not
             'amount' => $amount,
             'currency_code' => $currencyCode, // required for flat and flat per seat discounts
-            'mode' => 'standard', // standard discounts are shown in the dashboard, custom are not
             'enabled_for_checkout' => $enabledForCheckout,
 
             'discount_group_id' => $discountGroup,
