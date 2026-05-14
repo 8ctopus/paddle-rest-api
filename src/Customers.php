@@ -11,24 +11,28 @@ class Customers extends RestBase
     /**
      * List customers
      *
+     * @param $conditions
+     *
      * @return array<mixed>
      */
-    public function list() : array
+    public function list(array $conditions = []) : array
     {
         $url = '/customers';
 
-        $params = [
-            //'id' => [string],
-            //'after' => string,
-            //'per_page' => integer,
-            //'email' => [string],
-            //'order_by' => 'id[ASC]',
+        /*
+        $conditions = [
+            'id' => [string],
+            'after' => string,
+            'per_page' => integer,
+            'email' => [string],
+            'order_by' => 'id[ASC]',
             'status' => 'active,archived',
-            //'search' => string,
+            'search' => string,
         ];
+        */
 
-        if (count($params)) {
-            $url .= '?' . http_build_query($params);
+        if (count($conditions)) {
+            $url .= '?' . http_build_query($conditions);
         }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);

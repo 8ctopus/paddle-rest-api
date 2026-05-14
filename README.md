@@ -51,5 +51,4 @@ var_dump($products->list());
 ## issues with the current minimalist architecture
 
 - hard to use the demo for more complex things
-- filter lists not implemented
 - create complex items as arrays are not presently supported

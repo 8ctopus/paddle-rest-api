@@ -11,31 +11,35 @@ class Transactions extends RestBase
     /**
      * List transactions
      *
+     * @param array $conditions
+     *
      * @return array<mixed>
      */
-    public function list() : array
+    public function list(array $conditions = []) : array
     {
         $url = '/transactions';
 
-        $params = [
-            //'include' => [string],
-            //'id' => [string transaction-id],
-            //'after' => string,
-            //'billed_at' => string,
-            //'collection_mode' => automatic,manual
-            //'created_at' => string,
-            //'customer_id' => [string],
-            //'invoice_number' => [string],
-            //'origin' => [string],
-            //'order_by' => 'id[ASC]',
-            //'status' => [draft,ready,billed,paid,completed,canceled,past_due],
-            //'subscription_id' => string,
-            //'per_page' => integer,
-            //'updated_at' => string,
+        /*
+        $conditions = [
+            'include' => [string],
+            'id' => [string transaction-id],
+            'after' => string,
+            'billed_at' => string,
+            'collection_mode' => automatic,manual
+            'created_at' => string,
+            'customer_id' => [string],
+            'invoice_number' => [string],
+            'origin' => [string],
+            'order_by' => 'id[ASC]',
+            'status' => [draft,ready,billed,paid,completed,canceled,past_due],
+            'subscription_id' => string,
+            'per_page' => integer,
+            'updated_at' => string,
         ];
+        */
 
-        if (count($params)) {
-            $url .= '?' . http_build_query($params);
+        if (count($conditions)) {
+            $url .= '?' . http_build_query($conditions);
         }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);

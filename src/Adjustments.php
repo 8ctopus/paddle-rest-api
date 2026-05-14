@@ -11,26 +11,30 @@ class Adjustments extends RestBase
     /**
      * List adjustments
      *
+     * @param array $conditions
+     *
      * @return array<mixed>
      */
-    public function list() : array
+    public function list(array $conditions = []) : array
     {
         $url = '/adjustments';
 
-        $params = [
-            //'id' => [string],
-            //'after' => string,
-            //'action' => [string],
-            //'customer_id' => [customer-id],
-            //'order_by' => 'id[ASC]',
-            //'per_page' => integer,
-            //'status' => [pending_approval,approved,rejected,reversed],
-            //'subscription_id' => [subscription-id],
-            //'transaction_id' => [transaction-id],
+        /*
+        $conditions = [
+            'id' => [string],
+            'after' => string,
+            'action' => [string],
+            'customer_id' => [customer-id],
+            'order_by' => 'id[ASC]',
+            'per_page' => integer,
+            'status' => [pending_approval,approved,rejected,reversed],
+            'subscription_id' => [subscription-id],
+            'transaction_id' => [transaction-id],
         ];
+        */
 
-        if (count($params)) {
-            $url .= '?' . http_build_query($params);
+        if (count($conditions)) {
+            $url .= '?' . http_build_query($conditions);
         }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);

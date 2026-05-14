@@ -12,16 +12,16 @@ class Discounts extends RestBase
     /**
      * List discounts
      *
-     * @param array $params
+     * @param array $conditions
      *
      * @return array<mixed>
      */
-    public function list(array $params = []) : array
+    public function list(array $conditions = []) : array
     {
         $url = '/discounts';
 
         /*
-        $params = [
+        $conditions = [
             'id' => [string],
             'after' => string,
             'per_page' => integer,
@@ -34,8 +34,8 @@ class Discounts extends RestBase
         ];
         */
 
-        if (count($params)) {
-            $url .= '?' . http_build_query($params);
+        if (count($conditions)) {
+            $url .= '?' . http_build_query($conditions);
         }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);

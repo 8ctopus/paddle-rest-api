@@ -11,18 +11,22 @@ class Products extends RestBase
     /**
      * List products
      *
+     * @param $conditions
+     *
      * @return array<mixed>
      */
-    public function list() : array
+    public function list(array $conditions = []) : array
     {
         $url = '/products';
 
-        $params = [
+        /*
+        $conditions = [
             'status' => 'active,archived',
         ];
+        */
 
-        if (count($params)) {
-            $url .= '?' . http_build_query($params);
+        if (count($conditions)) {
+            $url .= '?' . http_build_query($conditions);
         }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);

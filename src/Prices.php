@@ -11,30 +11,32 @@ class Prices extends RestBase
     /**
      * List prices
      *
-     * @param ?array $productIds
+     * @param array $conditions
      *
      * @return array<mixed>
      */
-    public function list(?array $productIds = null) : array
+    public function list(array $conditions = []) : array
     {
         $url = '/prices';
 
-        $params = [
-            //'id' => [string],
-            //'after' => string,
-            //'per_page' => integer,
-            //'include' => [string product-id],
-            //'order_by' => 'id[ASC]',
-            'product_id' => $productIds,
-            //'status' => [active,archived],
-            //'recurring' => bool,
-            //'billing_cycle.interval' => 'day,week,month,year',
-            //'billing_cycle.frequency' => integer,
-            //'type' => 'standard,custom',
+        /*
+        $conditions = [
+            'id' => [string],
+            'after' => string,
+            'per_page' => integer,
+            'include' => [string product-id],
+            'order_by' => 'id[ASC]',
+            'product_id' => [],
+            'status' => [active,archived],
+            'recurring' => bool,
+            'billing_cycle.interval' => 'day,week,month,year',
+            'billing_cycle.frequency' => integer,
+            'type' => 'standard,custom',
         ];
+        */
 
-        if (count($params)) {
-            $url .= '?' . http_build_query($params);
+        if (count($conditions)) {
+            $url .= '?' . http_build_query($conditions);
         }
 
         $response = $this->sendRequest('GET', $url, [], null, 200);
