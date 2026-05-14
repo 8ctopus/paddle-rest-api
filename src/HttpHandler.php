@@ -94,7 +94,7 @@ class HttpHandler
 
         if (!in_array($status, $expectedStatus, true)) {
             $expected = implode(', ', $expectedStatus);
-            throw new PaddleException("status {$status} - expected [{$expected}] - {$body}");
+            throw new PaddleException("status {$status} - expected [{$expected}] - {$body}", $status);
         }
 
         return $body;
