@@ -24,7 +24,9 @@ class Prices extends RestBase
             'id' => [string],
             'after' => string,
             'per_page' => integer,
-            'include' => [string product-id],
+            'include' => [
+                'product',
+            ],
             'order_by' => 'id[ASC]',
             'product_id' => [],
             'status' => [active,archived],

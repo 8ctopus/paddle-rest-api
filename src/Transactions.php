@@ -21,7 +21,15 @@ class Transactions extends RestBase
 
         /*
         $conditions = [
-            'include' => [string],
+            'include' => [
+                'address',
+                'adjustments',
+                'adjustments_totals',
+                'available_payment_methods',
+                'business',
+                'customer',
+                'discount',
+            ],
             'id' => [string transaction-id],
             'after' => string,
             'billed_at' => string,

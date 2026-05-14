@@ -21,7 +21,28 @@ class Products extends RestBase
 
         /*
         $conditions = [
-            'status' => 'active,archived',
+            'id' => [string ids],
+            'after' => string,
+            'per_page' => integer,
+            'include' => [
+                'prices',
+            ],
+            'order_by' => 'id[ASC]',
+            'status' => [
+                'active,
+                archived',
+            ],
+            'tax_category' => [
+                'digital-goods',
+                'ebooks',
+                'implementation-services',
+                'professional-services',
+                'saas',
+            ],
+            'type' => [
+                'standard',
+                'custom',
+            ],
         ];
         */
 
