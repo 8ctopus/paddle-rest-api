@@ -80,7 +80,7 @@ class Discounts extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function create(?string $code, string $description, string $type, string $mode, string $amount, ?string $currencyCode, bool $enabledForCheckout, ?string $discountGroup, ?array $restrictTo, ?int $usageLimit, ?DateTime $expiresAt, bool $recurr) : array
     {
@@ -112,7 +112,7 @@ class Discounts extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function createFromArray(array $discount) : array
     {

@@ -82,7 +82,7 @@ class Products extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function create(string $name, ?string $description, string $type, string $taxCategory, ?string $imageUrl) : array
     {
@@ -95,6 +95,20 @@ class Products extends RestBase
             //'custom_data' => [],
         ];
 
+        return $this->createFromArray($product);
+    }
+
+    /**
+     * Create from array
+     *
+     * @param  array  $product
+     *
+     * @return array
+     *
+     * @throws PaddleException|JsonException
+     */
+    public function createFromArray(array $product) : array
+    {
         $url = '/products';
 
         $response = $this->sendJsonRequest('POST', $url, [], $product, 201);

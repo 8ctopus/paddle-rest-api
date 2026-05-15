@@ -60,7 +60,7 @@ class DiscountGroups extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function create(string $name) : array
     {
@@ -68,6 +68,18 @@ class DiscountGroups extends RestBase
             'name' => $name,
         ];
 
+        return $this->createFromArray($group);
+    }
+
+    /**
+     * Create from array
+     *
+     * @param  array  $group
+     *
+     * @return array
+     */
+    public function createFromArray(array $group) : array
+    {
         $url = '/discount-groups';
 
         $response = $this->sendJsonRequest('POST', $url, [], $group, 201);
@@ -87,7 +99,6 @@ class DiscountGroups extends RestBase
     public function update(string $id, string $key, string|bool|int|array $value) : array
     {
         // possible keys: name, status
-
         $update = [
             $key => $value,
         ];

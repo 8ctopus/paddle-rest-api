@@ -73,7 +73,7 @@ class Prices extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function create(string $productId, ?string $name, ?string $description, string $amount, string $currencyCode) : array
     {
@@ -105,6 +105,20 @@ class Prices extends RestBase
             */
         ];
 
+        return $this->createFromArray($price);
+    }
+
+    /**
+     * Create from array
+     *
+     * @param  array  $price
+     *
+     * @return array
+     *
+     * @throws PaddleException|JsonException
+     */
+    public function createFromArray(array $price) : array
+    {
         $url = '/prices';
 
         $response = $this->sendJsonRequest('POST', $url, [], $price, 201);

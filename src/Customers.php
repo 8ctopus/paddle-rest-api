@@ -64,20 +64,34 @@ class Customers extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function create(string $email, ?string $name) : array
     {
-        $product = [
+        $customer = [
             'email' => $email,
             'name' => $name,
             //'locale' => $locale,
             //'custom_data' => [],
         ];
 
+        return $this->createFromArray($customer);
+    }
+
+    /**
+     * Create from array
+     *
+     * @param  array  $customer
+     *
+     * @return array
+     *
+     * @throws PaddleException|JsonException
+     */
+    public function createFromArray(array $customer) : array
+    {
         $url = '/customers';
 
-        $response = $this->sendJsonRequest('POST', $url, [], $product, 201);
+        $response = $this->sendJsonRequest('POST', $url, [], $customer, 201);
 
         return $this->decodeResponse($response);
     }

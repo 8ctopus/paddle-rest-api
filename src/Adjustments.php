@@ -68,7 +68,7 @@ class Adjustments extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function create(string $transactionId, string $action, string $type, string $reason) : array
     {
@@ -81,6 +81,20 @@ class Adjustments extends RestBase
             //'items' => [], // List of transaction items to adjust. Required if type is not populated or set to partial.
         ];
 
+        return $this->createFromArray($adjustment);
+    }
+
+    /**
+     * Create from array
+     *
+     * @param  array  $adjustment
+     *
+     * @return array
+     *
+     * @throws PaddleException|JsonException
+     */
+    public function createFromArray(array $adjustment) : array
+    {
         $url = '/adjustments';
 
         $response = $this->sendJsonRequest('POST', $url, [], $adjustment, 201);

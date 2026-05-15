@@ -84,13 +84,25 @@ class Transactions extends RestBase
      *
      * @return array
      *
-     * @throws JsonException|PaddleException
+     * @throws PaddleException|JsonException
      */
     public function create() : array
     {
         throw new PaddleException('not implemented');
         $transaction = [];
 
+        return $this->createFromArray($transaction);
+    }
+
+    /**
+     * Create from array
+     *
+     * @return array
+     *
+     * @throws PaddleException|JsonException
+     */
+    public function createFromArray(array $transaction) : array
+    {
         $url = '/transactions';
 
         $response = $this->sendJsonRequest('POST', $url, [], $transaction, 201);
