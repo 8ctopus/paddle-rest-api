@@ -138,7 +138,9 @@ $router->add('discount groups archive <group-id>', static function (array $args)
 
 $router->add('discounts list', static function () use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
-    dump($discounts->list());
+    dump($discounts->list([
+        //'mode' => 'custom',
+    ]));
 });
 
 $router->add('discounts get <discount-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {

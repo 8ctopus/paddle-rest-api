@@ -32,7 +32,7 @@ class Discounts extends RestBase
             'code' => [string],
             'order_by' => 'id[ASC]',
             'status' => [active,archived],
-            'mode' => 'standard,custom',
+            'mode' => 'standard,custom', // default mode is standard, custom discounts are not listed
             'discount_group_id' => '',
         ];
         */
