@@ -101,6 +101,20 @@ class Discounts extends RestBase
             'custom_data' => null,
         ];
 
+        return $this->createFromArray($discount);
+    }
+
+    /**
+     * Create discount
+     *
+     * @param array    $discount
+     *
+     * @return array
+     *
+     * @throws JsonException|PaddleException
+     */
+    public function createFromArray(array $discount) : array
+    {
         $url = '/discounts';
 
         $response = $this->sendJsonRequest('POST', $url, [], $discount, 201);
