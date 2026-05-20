@@ -29,7 +29,7 @@ class Discounts extends RestBase
             'include' => [
                 'discount_group',
             ],
-            'code' => [string],
+            'code' => string, // or code1,code2
             'order_by' => 'id[ASC]',
             'status' => [active,archived],
             'mode' => 'standard,custom', // default mode is standard, custom discounts are not listed
