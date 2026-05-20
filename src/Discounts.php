@@ -96,7 +96,7 @@ class Discounts extends RestBase
             'discount_group_id' => $discountGroup,
             'restrict_to' => $restrictTo, // product or prices
             'usage_limit' => $usageLimit, // integer or null for unlimited
-            'expires_at' => $expiresAt->format(DateTimeInterface::RFC3339),
+            'expires_at' => $expiresAt ? $expiresAt->format(DateTimeInterface::RFC3339) : $expiresAt,
 
             'recur' => $recurr,
             'custom_data' => null,
