@@ -138,8 +138,13 @@ $router->add('discount groups archive <group-id>', static function (array $args)
 
 $router->add('discounts list', static function () use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
+    dump($discounts->list());
+});
+
+$router->add('discounts search <code>', static function ($args) use ($sandbox, $handler, $auth) : void {
+    $discounts = new Discounts($sandbox, $handler, $auth);
     dump($discounts->list([
-        //'mode' => 'custom',
+        'code' => $args['code'],
     ]));
 });
 
