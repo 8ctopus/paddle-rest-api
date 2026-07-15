@@ -15,6 +15,7 @@ use Oct8pus\Paddle\Discounts;
 use Oct8pus\Paddle\HttpHandler;
 use Oct8pus\Paddle\Prices;
 use Oct8pus\Paddle\Products;
+use Oct8pus\Paddle\Subscriptions;
 use Oct8pus\Paddle\Transactions;
 
 $vendor = __DIR__ . '/vendor/autoload.php';
@@ -153,6 +154,31 @@ $router->add('discounts get <discount-id>', static function (array $args) use ($
     dump($discounts->get($args['discount-id']));
 });
 
+$router->add('discounts create test <code>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $discounts = new Discounts($sandbox, $handler, $auth);
+
+    $discount = [
+        'code' => $args['code'],
+        'description' => 'test',
+        'type' => 'flat',
+        'mode' => 'standard',
+        'amount' => '300',
+        'currency_code' => 'USD',
+        'enabled_for_checkout' => true,
+
+        'discount_group_id' => 'dsg_01kqeebp9kvetmnh48vedne7re',
+        'restrict_to' => [
+            'pri_01kkkwqzdsmgyh68kx2r4m703g',
+        ],
+        'usage_limit' => null,
+        'expires_at' => null,
+
+        'recur' => false,
+    ];
+
+    dump($discounts->createFromArray($discount));
+});
+
 $router->add('discounts create <code> <description> <type> <mode> <amount> <currency-code> <enabled-for-checkout> <discount-group> <recurr>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $discounts = new Discounts($sandbox, $handler, $auth);
     dump($discounts->create($args['code'], $args['description'], $args['type'], $args['mode'], $args['amount'], $args['currency-code'], (bool) $args['enabled-for-checkout'], $args['discount-group'], null, null, null, (bool) $args['recurr']));
@@ -216,6 +242,39 @@ $router->add('customers create <email> <name>', static function (array $args) us
 $router->add('customers update <customer-id> <key> <value>', static function (array $args) use ($sandbox, $handler, $auth) : void {
     $customers = new Customers($sandbox, $handler, $auth);
     dump($customers->update($args['customer-id'], $args['key'], $args['value']));
+});
+
+$router->add('customers get from transaction <transaction-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $transactions = new Transactions($sandbox, $handler, $auth);
+    $transaction = $transactions->get($args['transaction-id']);
+
+    $customers = new Customers($sandbox, $handler, $auth);
+    dump($customers->get($transaction['customer_id']));
+});
+
+$router->add('subscriptions list', static function () use ($sandbox, $handler, $auth) : void {
+    $subscriptions = new Subscriptions($sandbox, $handler, $auth);
+    dump($subscriptions->list());
+});
+
+$router->add('subscriptions get <subscription-id>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $subscriptions = new Subscriptions($sandbox, $handler, $auth);
+    dump($subscriptions->get($args['subscription-id']));
+});
+
+$router->add('subscriptions pause <subscription-id> <immediately>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $subscriptions = new Subscriptions($sandbox, $handler, $auth);
+    dump($subscriptions->pause($args['subscription-id'], (bool) $args['immediately']));
+});
+
+$router->add('subscriptions resume <subscription-id> <immediately>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $subscriptions = new Subscriptions($sandbox, $handler, $auth);
+    dump($subscriptions->resume($args['subscription-id'], (bool) $args['immediately']));
+});
+
+$router->add('subscriptions cancel <subscription-id> <immediately>', static function (array $args) use ($sandbox, $handler, $auth) : void {
+    $subscriptions = new Subscriptions($sandbox, $handler, $auth);
+    dump($subscriptions->cancel($args['subscription-id'], (bool) $args['immediately']));
 });
 
 $router->add('help', static function () use ($router) : void {
