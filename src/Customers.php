@@ -111,9 +111,22 @@ class Customers extends RestBase
             $key => $value,
         ];
 
+        return $this->updates($id, $update);
+    }
+
+    /**
+     * Multi update customer
+     *
+     * @param  string $id
+     * @param  array  $data - key value pairs
+     *
+     * @return array
+     */
+    public function updates(string $id, array $data) : array
+    {
         $url = "/customers/{$id}";
 
-        $response = $this->sendJsonRequest('PATCH', $url, [], $update, 200);
+        $response = $this->sendJsonRequest('PATCH', $url, [], $data, 200);
 
         return $this->decodeResponse($response);
     }
